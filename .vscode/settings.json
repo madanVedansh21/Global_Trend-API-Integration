@@ -1,0 +1,4 @@
+{
+  "fiveServer.ignore": ["**/storeData/**"],
+  "fiveServer.watch": []
+}

@@ -1,0 +1,3 @@
+/* nothing much in gitignore just the node modules */
+
+node_modules/

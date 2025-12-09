@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Data Viewer</title>
+  </head>
+  <body>
+    <h1>API Data Viewer</h1>
+
+    <div>
+      <button onclick="fetchAllData()">Show All Data</button>
+      <button onclick="toggleFilter()">Filter Data</button>
+    </div>
+
+    <div id="filterGroup" style="display: none">
+      <input
+        type="number"
+        id="idInput"
+        placeholder="Enter ID (e.g., 1)"
+        min="1"
+      />
+      <input
+        type="text"
+        id="nameInput"
+        placeholder="Enter Name/Login (e.g., octocat)"
+      />
+      <button onclick="fetchFilteredData()">Search</button>
+    </div>
+
+    <div id="errorContainer"></div>
+
+    <div id="results"></div>
+
+    <script>
+      const API_BASE = "http://localhost:3000";
+
+      function showError(message) {
+        const errorContainer = document.getElementById("errorContainer");
+        errorContainer.innerHTML = `<p>${message}</p>`;
+      }
+
+      function toggleFilter() {
+        const filterGroup = document.getElementById("filterGroup");
+        filterGroup.style.display =
+          filterGroup.style.display === "none" ? "block" : "none";
+      }
+
+      async function fetchAllData() {
+        try {
+          const response = await fetch(`${API_BASE}/`);
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          const data = await response.json();
+          document.getElementById("results").innerHTML = `<pre>${JSON.stringify(
+            data,
+            null,
+            2
+          )}</pre>`;
+        } catch (error) {
+          showError(`Error: ${error.message}`);
+        }
+        
+      }
+
+      async function fetchFilteredData() {
+        try {
+          const id = document.getElementById("idInput").value.trim();
+          const name = document.getElementById("nameInput").value.trim();
+
+          if (!id && !name) {
+            showError("Enter at least an ID or a Name");
+            return;
+          }
+
+          const params = new URLSearchParams();
+          if (id) params.append("id", id);
+          if (name) params.append("name", name);
+
+          const response = await fetch(
+            `${API_BASE}/filtered?${params.toString()}`
+          );
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          const data = await response.json();
+
+          document.getElementById("results").innerHTML = `<pre>${JSON.stringify(
+            data,
+            null,
+            2
+          )}</pre>`;
+        } catch (error) {
+          showError(`Error: ${error.message}`);
+        }
+      }
+    </script>
+  </body>
+</html>

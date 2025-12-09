@@ -1,0 +1,23 @@
+{
+  "name": "global_trend-api-integration",
+  "version": "1.0.0",
+  "description": "here are the steps to",
+  "homepage": "https://github.com/madanVedansh21/Global_Trend-API-Integration#readme",
+  "bugs": {
+    "url": "https://github.com/madanVedansh21/Global_Trend-API-Integration/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madanVedansh21/Global_Trend-API-Integration.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
