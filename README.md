@@ -1,5 +1,11 @@
 # Global_Trend-API-Integration
 
+how to start the server
+just you have to
+npm i
+start the server with the basic command -> node index.js
+and click the go live to start the html server in vs code
+
 here are the steps to run and understand what all things i have implemented
 
 1. this mini project is as follows :-
@@ -21,3 +27,7 @@ and last requirement was to either store these in a file or database
 i have implemented button that just stores the random data in a file
 
 for your references i have attached some screenshots in the screenshot folder
+
+# IMP THE ONLY HELP I TOOK OF INTERNET AND USED AI WAS TO SOLVE A PROBLEM AFTER IMPLEMENTING THE FILE HANDELING THE SERVER WAS RELOADING AFTER THE DATA WAS SAVED AFTER WHEN I CLICKED THE FILTER DATA BUTTON OR SHOW ALL DATA
+
+# SO IT TOLD ME TO WRITE THE SETTINGS . JSON THAT TOLD THE SERVER NOT TO RELOAD
